@@ -1,12 +1,20 @@
 $(document).ready(function() {
-	$('input[data-id=":amenity_id"][data-name=":amenity_name"]').on('change', function(){
-		if ($(this).is(":checked")) {
-			$('.amenities > h4').each(function() {
-				console.log('mise à jour');
-			});
+    var amenityIds = {};
+    $('input[type="checkbox"]').on('change', function() {
+        var amenityId = $(this).data('id');
+        var amenityName = $(this).data('name');
 
-		} else {
-			console.log('remove');
-		}
-	});
+        if ($(this).is(":checked")) {
+            amenityIds[amenityId] = amenityName;
+        } else {
+            delete amenityIds[amenityId];
+        }
+
+        var amenityList = Object.values(amenityIds).join(', ');
+        var longueurMax = 35;
+        if (amenityList.length > longueurMax) {
+            amenityList = amenityList.substring(0, longueurMax) + '...';
+        }
+        $('.amenities > h4').text(amenityList);
+    });
 });
