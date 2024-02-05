@@ -21,16 +21,17 @@ $(document).ready(() => {
 
 $(document).ready(() => {
   $.ajax({
-    url: 'http://0.0.0.0:5001/api/v1/status/',
-    success(response) {
-      if (response.status === 'OK') {
-        $('#api_status').addClass('available');
-      } else {
-        $('#api_status').removeClass('available');
-      }
-    },
-    error(error) {
-      console.error('Error fetching API status', error);
-    },
+      url: 'http://0.0.0.0:5000/api/v1/status/',
+      success(response) {
+          if (response.status === 'OK') {
+              $('#api_status').addClass('available');
+          } else {
+              $('#api_status').removeClass('available');
+          }
+      },
+      error(error) {
+          console.error('Error fetching API status', error);
+      },
   });
 });
+
