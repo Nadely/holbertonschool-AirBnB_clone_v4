@@ -1,8 +1,8 @@
 $(document).ready(function() {
-    var amenityIds = {};
+    const amenityIds = {};
     $('input[type="checkbox"]').on('change', function() {
-        var amenityId = $(this).data('id');
-        var amenityName = $(this).data('name');
+        const amenityId = $(this).data('id');
+        const amenityName = $(this).data('name');
 
         if ($(this).is(":checked")) {
             amenityIds[amenityId] = amenityName;
@@ -10,8 +10,8 @@ $(document).ready(function() {
             delete amenityIds[amenityId];
         }
 
-        var amenityList = Object.values(amenityIds).join(', ');
-        var longueurMax = 35;
+        let amenityList = Object.values(amenityIds).join(', ');
+        const longueurMax = 35;
         if (amenityList.length > longueurMax) {
             amenityList = amenityList.substring(0, longueurMax) + '...';
         }
